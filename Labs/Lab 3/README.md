@@ -1,3 +1,11 @@
+# Instruções
+
+Se quiser usar o Makefile para gerar o `results.txt`, basta executar:
+
+```bash
+make clean && make numero_threads=4 dimensao_vetor=99900000 numero_testes=1 prefix=arq
+```
+
 # Análise das Execuções (5)
 
 ## Programa sequencial é mais eficiente (1 thread) 
