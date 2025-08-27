@@ -1,0 +1,51 @@
+Resultados para 1 threads, vetor de 9999999 dimensões, arquivo 'tst_bin/ex_1'
+============================================================================
+Resultado sequencial  : 919926191.09646916389465332031250000
+Resultado concorrente : 919926191.09646916389465332031250000
+Duração (sequencial)  : 0.0377180576 s
+Duração (concorrente) : 0.0393118858 s
+Variação relativa     : 0.0000000000e+00
+
+
+Resultados para 1 threads, vetor de 9999999 dimensões, arquivo 'tst_bin/ex_2'
+============================================================================
+Resultado sequencial  : -1181869771.84954738616943359375000000
+Resultado concorrente : -1181869771.84954738616943359375000000
+Duração (sequencial)  : 0.0405268669 s
+Duração (concorrente) : 0.0378060341 s
+Variação relativa     : 0.0000000000e+00
+
+
+Resultados para 1 threads, vetor de 9999999 dimensões, arquivo 'tst_bin/ex_3'
+============================================================================
+Resultado sequencial  : -618952908.44093418121337890625000000
+Resultado concorrente : -618952908.44093418121337890625000000
+Duração (sequencial)  : 0.0386991501 s
+Duração (concorrente) : 0.0389389992 s
+Variação relativa     : 0.0000000000e+00
+
+
+Resultados para 1 threads, vetor de 9999999 dimensões, arquivo 'tst_bin/ex_4'
+============================================================================
+Resultado sequencial  : -583778678.15112602710723876953125000
+Resultado concorrente : -583778678.15112602710723876953125000
+Duração (sequencial)  : 0.0403430462 s
+Duração (concorrente) : 0.0382909775 s
+Variação relativa     : 0.0000000000e+00
+
+
+Resultados para 1 threads, vetor de 9999999 dimensões, arquivo 'tst_bin/ex_5'
+============================================================================
+Resultado sequencial  : 966303023.51100313663482666015625000
+Resultado concorrente : 966303023.51100313663482666015625000
+Duração (sequencial)  : 0.0372278690 s
+Duração (concorrente) : 0.0375339985 s
+Variação relativa     : 0.0000000000e+00
+
+Resultados (médias para os 5 casos)
+===================================
+
+Duração média (concorrente) : 0.0383763790 s
+Duração média (sequencial)  : 0.0389029980 s
+Diferente entre as durações : 0.0005266189 s
+Variação relativa média     : 0.0000000000e+00

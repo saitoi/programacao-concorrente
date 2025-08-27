@@ -1,0 +1,52 @@
+Resultados para 4 threads, vetor de 99900000 dimensões, arquivo 'tst_bin/ex_1'
+========================================
+Resultado sequencial  : 3176924960.71141338348388671875000000
+Resultado concorrente : 3176924960.71141672134399414062500000
+Duração (sequencial)  : 0.5603590012 s
+Duração (concorrente) : 0.1688179970 s
+Variação relativa     : 1.0506575222e-15
+
+
+Resultados para 4 threads, vetor de 99900000 dimensões, arquivo 'tst_bin/ex_2'
+========================================
+Resultado sequencial  : 4279820774.47063827514648437500000000
+Resultado concorrente : 4279820774.47063732147216796875000000
+Duração (sequencial)  : 0.4513299465 s
+Duração (concorrente) : 0.1637079716 s
+Variação relativa     : 2.2283043302e-16
+
+
+Resultados para 4 threads, vetor de 99900000 dimensões, arquivo 'tst_bin/ex_3'
+========================================
+Resultado sequencial  : -7563430511.60079097747802734375000000
+Resultado concorrente : -7563430511.60082530975341796875000000
+Duração (sequencial)  : 0.4927592278 s
+Duração (concorrente) : 0.1016860008 s
+Variação relativa     : 4.5392464885e-15
+
+
+Resultados para 4 threads, vetor de 99900000 dimensões, arquivo 'tst_bin/ex_4'
+========================================
+Resultado sequencial  : 626249384.14381861686706542968750000
+Resultado concorrente : 626249384.14381885528564453125000000
+Duração (sequencial)  : 0.5125069618 s
+Duração (concorrente) : 0.1090891361 s
+Variação relativa     : 3.8070868433e-16
+
+
+Resultados para 4 threads, vetor de 99900000 dimensões, arquivo 'tst_bin/ex_5'
+========================================
+Resultado sequencial  : -5438252423.83992290496826171875000000
+Resultado concorrente : -5438252423.83992004394531250000000000
+Duração (sequencial)  : 0.4858930111 s
+Duração (concorrente) : 0.1024298668 s
+Variação relativa     : 5.2609234111e-16
+
+
+Resultados (médias para os 5 casos)
+===================================
+
+Duração média (concorrente) : 0.1291461945 s
+Duração média (sequencial)  : 0.5005696297 s
+Diferente entre as durações : 0.3714234352 s
+Variação relativa média     : 1.3439070938e-15
