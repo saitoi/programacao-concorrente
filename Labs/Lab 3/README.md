@@ -14,7 +14,7 @@ Observação: A duração contabilizada é referente ao cálculo do produto inte
 - Duração (concorrente) : 0.0363638401 s
 - Variação relativa     : 0.0000000000e+00
 
-## Programa é mais eficiente (2 thread) 
+## Programa concorrente é mais eficiente (2 thread) 
 
 ##### Resultados para 2 threads, vetor de 50000000 dimensões, arquivo 'tst_bin/ex_1'
 
