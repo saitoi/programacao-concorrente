@@ -20,7 +20,7 @@ void *produto_interno(void *args) {
     // Somatório do produto interno no espaço delimitado pela thread (0 -> tamanho do chunk)
     // Vale notar que como eu passo o endereço para uma posição específica do vetor, posso começar do zero.
     for (int i = 0; i < t->chunk; ++i)
-        soma_aux += (double) t->arr_a[i] * (double) t->arr_b[i];
+        soma_aux += t->arr_a[i] * t->arr_b[i];
 
     // Alocação do espaço de memória para a variável ret a ser retornada
     free(t);
