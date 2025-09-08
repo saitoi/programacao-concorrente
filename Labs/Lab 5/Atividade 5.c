@@ -8,9 +8,10 @@
 #include <pthread.h>
 
 #define ITER 100000
+#define MULTIPLO 1000
 
 long int soma = 0; //variavel compartilhada entre as threads
-long int proximo_multiplo = 1000;
+long int proximo_multiplo = MULTIPLO;
 short int impresso = 0;
 pthread_mutex_t mutex; //variavel de lock para exclusao mutua
 pthread_cond_t cond_1, cond_2;
@@ -51,7 +52,7 @@ void *extra (void *args) {
      printf("soma = %ld \n", soma);
      impresso = 1;
      pthread_cond_broadcast(&cond_2);
-     proximo_multiplo += 1000;
+     proximo_multiplo += MULTIPLO;
      printf("proximo multiplo: %ld\n", proximo_multiplo);
   }
   pthread_mutex_unlock(&mutex);
