@@ -3,6 +3,7 @@
 #include <pthread.h>
 
 int x = 0;
+short impresso = 0;
 pthread_mutex_t x_mutex;
 pthread_cond_t x_cond;
 pthread_cond_t y_cond;
@@ -12,8 +13,9 @@ void *A(void *tid) {
         pthread_mutex_lock(&x_mutex);
         if (x == 50) {
             printf("Eu estou aqui, e x é %d\n", x);
+            impresso = 0;
             pthread_cond_signal(&y_cond);
-            pthread_cond_wait(&x_cond, &x_mutex);
+            while (!impresso) pthread_cond_wait(&x_cond, &x_mutex);
         }
         x++;
         pthread_mutex_unlock(&x_mutex);
@@ -28,6 +30,7 @@ void *B(void *tid) {
         printf("liberada\n");
     }
     printf("X=%d\n", x);
+    impresso = 1;
     pthread_cond_broadcast(&x_cond);
     pthread_mutex_unlock(&x_mutex);
     return NULL;
