@@ -25,6 +25,5 @@ gcc Atividade\ 4.c
  
 ### Outras Mudanças
 
-- Substituição do `for` na thread `extra` pelo `while(proximo_multiplo <= max_iter)` que apenas encerra quando o próximo múltiplo atingir o número máximo de iterações (=<número de threads ExecutaTarefa> * <ITER>).
+- Substituição do `for` na thread `extra` pelo `while(proximo_multiplo < max_iter)` que apenas encerra quando o próximo múltiplo atingir o número máximo de iterações (=<número de threads ExecutaTarefa> * <ITER>).
 - Colocar `while` em todos os `wait` + condição para impedir com que as threads acordem e o estado não seja o incorreto.
-- Signal a mais antes de dar join na thread extra para que ela acorde e finalize.

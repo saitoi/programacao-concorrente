@@ -12,7 +12,7 @@
 
 long int soma = 0; //variavel compartilhada entre as threads
 long int proximo_multiplo = MULTIPLO;
-short int impresso = 0;
+short int impresso = 1;
 pthread_mutex_t mutex; //variavel de lock para exclusao mutua
 pthread_cond_t cond_1, cond_2;
 
@@ -25,13 +25,13 @@ void *ExecutaTarefa (void *arg) {
      //--entrada na SC
      pthread_mutex_lock(&mutex);
      //--SC (seção critica)
+     while (!impresso)
+        pthread_cond_wait(&cond_2, &mutex);
+     soma++; //incrementa a variavel compartilhada 
      if (soma == proximo_multiplo) {
         impresso = 0;
         pthread_cond_signal(&cond_1);
-        while (!impresso)
-            pthread_cond_wait(&cond_2, &mutex);
      }
-     soma++; //incrementa a variavel compartilhada 
      //--saida da SC
      pthread_mutex_unlock(&mutex);
   }
@@ -45,7 +45,7 @@ void *extra (void *args) {
   printf("Extra : esta executando...\n");
 
   pthread_mutex_lock(&mutex);
-  while (proximo_multiplo <= max_iter) {
+  while (proximo_multiplo < max_iter) {
      while (soma < proximo_multiplo) //imprime se 'soma' for multiplo de 1000
          pthread_cond_wait(&cond_1, &mutex);
 
@@ -53,7 +53,6 @@ void *extra (void *args) {
      impresso = 1;
      pthread_cond_broadcast(&cond_2);
      proximo_multiplo += MULTIPLO;
-     printf("proximo multiplo: %ld\n", proximo_multiplo);
   }
   pthread_mutex_unlock(&mutex);
 
@@ -83,28 +82,24 @@ int main(int argc, char *argv[]) {
    pthread_cond_init(&cond_2, NULL);
 
    //--cria as threads
-   // Cria nthreads de ExecutaTarefa e uma de extra
+   // Cria nthreads de ExecutaTarefa
    for(long int t=0; t<nthreads; t++) {
      if (pthread_create(&tid[t], NULL, ExecutaTarefa, (void *)t)) {
        printf("--ERRO: pthread_create()\n"); exit(-1);
      }
    }
 
-   //--cria thread de log
+   //--cria uma thread de log
    if (pthread_create(&tid[nthreads], NULL, extra, (void*) (ITER * nthreads))) {
       printf("--ERRO: pthread_create()\n"); exit(-1);
    }
 
    //--espera todas as threads terminarem
-   for (int t=0; t<nthreads; t++) {
+   for (int t=0; t<(nthreads + 1); t++) {
      if (pthread_join(tid[t], NULL)) {
          printf("--ERRO: pthread_join() \n"); exit(-1); 
      } 
    } 
-
-   // sinaliza thread extra para finalizar
-   pthread_cond_signal(&cond_1);
-   if (pthread_join(tid[nthreads], NULL)) { printf("--ERRO: pthread_join()\n"); exit(-1);  }
 
    //--finaliza o mutex
    pthread_mutex_destroy(&mutex);
