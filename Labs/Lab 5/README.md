@@ -3,7 +3,7 @@
 ### Execução
 
 ```bash
-gcc Atividade\ 4.c
+gcc Atividade\ 5.c
 ./a.out
 ```
 
