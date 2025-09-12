@@ -10,9 +10,19 @@ R wikipedia: É uma área de código de um programa concorrente que acessa um re
 
 **Enunciado**: O que é corrida de dados em um programa concorrente?
 
-R minha: Refere-se à situação na qual o resultado programa depende da ordem de execução dos fluxos disparados pelo mesmo. Isso se deve à presença de regiões críticas nas quais as linhas de execução acessam concorrentemente sem estratégias de sincronização ou controle estabelecidas.
+R minha: Refere-se à situação na qual o resultado programa depende da ordem de
+execução dos fluxos disparados pelo mesmo. Isso se deve à presença de regiões
+críticas nas quais as linhas de execução acessam concorrentemente sem
+estratégias de sincronização ou controle estabelecidas.
 
-R GPT: É quando dois ou mais fluxos de execução acessam a mesma localização de memória ao mesmo tempo, pelo menos um acesso é escrita, e não há ordem de sincronização (“happens-before”) entre esses acessos—ou os acessos não são atômicos. Nessa situação, o valor lido/escrito é indeterminado e o programa pode se comportar de forma imprevisível.
+R GPT: É quando dois ou mais fluxos de execução acessam a mesma localização de
+memória ao mesmo tempo, pelo menos um acesso é escrita, e não há ordem de
+sincronização (“happens-before”) entre esses acessos—ou os acessos não são
+atômicos. Nessa situação, o valor lido/escrito é indeterminado e o programa
+pode se comportar de forma imprevisível.
+
+R site: Ocorre quando uma thread acessa um objeto mutável enquanto outra thread
+está escrevendo neste objeto (semelhante à definição do GPT)
 
 **Enunciado**: O que é violação de atomicidade em um programa concorrente?
 
