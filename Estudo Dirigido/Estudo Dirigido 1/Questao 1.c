@@ -25,13 +25,7 @@ void *calc_pi(void *args) {
     thread_args *t = (thread_args*) args;
     double pi_aux = 0.0;
 
-    size_t base = (size_t) t->entradas / t->nthreads;
-    size_t rem = (size_t) t->entradas % t->nthreads;
-    size_t chunk = base + (t->id < (int) rem);
-    size_t start = (size_t)t->id * base + (t->id < (int) rem ? (size_t) t->id : rem);
-
-    printf("Start: %zu, Chunk: %zu\n", start, chunk);
-    for (size_t i = start; i < start + chunk; i++)
+    for (size_t i = t->id; i < t->entradas; i += t->nthreads)
         pi_aux += bbp(i);
 
     printf("Pi part: %.17g\n", pi_aux);
