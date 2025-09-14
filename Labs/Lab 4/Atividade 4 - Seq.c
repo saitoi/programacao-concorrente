@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <pthread.h>
+#include "timer.h"
 
 static inline int ehPrimo(long long int n) {
     int i;
@@ -15,6 +16,7 @@ static inline int ehPrimo(long long int n) {
 
 int main(int argc, char *argv[]) {
     int qtd_primos = 0;
+    double start = 0.0, end = 0.0;
     long long nelementos;
 
     if (argc < 2) {
@@ -22,15 +24,20 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    nelementos = (long long) atoll(argv[2]);
+    nelementos = (long long) atoll(argv[1]);
 
+    GET_TIME(start);
     for (long long i = 0; i < nelementos; ++i) {
         if (ehPrimo(i+1)) {
             ++qtd_primos;
         }
     }
+    GET_TIME(end);
+
+    double delta = end - start;
 
     printf("A quantidade total de primos é de %d.\n", qtd_primos);
+    printf("O tempo de execução sequencial foi de %.26lf.\n", delta);
 
     return 0;
 }

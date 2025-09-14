@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <pthread.h>
+#include "timer.h"
 
 long long qtd_primos = 0;
 pthread_mutex_t mutex;
@@ -26,10 +27,10 @@ void *quantos_primos(void *args) {
     thread_args *t = (thread_args*) args;
 
     for (long long i = t->id; i < t->nelementos; i += t->nthreads) {
-        printf("A thread [%d] está verificando %lld.\n", t->id, i+1);
+        /* printf("A thread [%d] está verificando %lld.\n", t->id, i+1); */
         if (ehPrimo(i + 1)) {
             pthread_mutex_lock(&mutex);
-            printf("%lld é primo.\n", i + 1);
+            /* printf("%lld é primo.\n", i + 1); */
             qtd_primos++;
             pthread_mutex_unlock(&mutex);
         }
@@ -41,6 +42,7 @@ void *quantos_primos(void *args) {
 
 int main(int argc, char *argv[]) {
     int nthreads;
+    double start = 0.0, end = 0.0;
     long long nelementos;
 
     pthread_mutex_init(&mutex, NULL);
@@ -52,7 +54,6 @@ int main(int argc, char *argv[]) {
 
     nthreads = (int) atoi(argv[1]);
     nelementos = (long long) atoll(argv[2]);
-    printf("nele: %lld\n", nelementos);
 
     if (nelementos < nthreads)
         nthreads = (int) nelementos;
@@ -63,6 +64,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    GET_TIME(start);
     for (int i = 0; i < nthreads; ++i) {
         thread_args *args = (thread_args*) malloc(sizeof(thread_args));
         if (!args) {
@@ -77,6 +79,7 @@ int main(int argc, char *argv[]) {
             return 1;
         }
     }
+    GET_TIME(end);
 
     for (int i = 0; i < nthreads; ++i) {
         if (pthread_join(tids[i], NULL) != 0) {
@@ -85,7 +88,10 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    double delta = end - start;
+
     printf("A quantidade total de primos é de %lld.\n", qtd_primos);
+    printf("O tempo de execução concorrente foi de %.26lf.\n", delta);
 
     pthread_mutex_destroy(&mutex);
 
