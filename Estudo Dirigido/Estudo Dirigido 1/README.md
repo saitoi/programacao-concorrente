@@ -59,6 +59,31 @@ tempo de execução por mais que exista uma ordem de precedência exigida.
 
 R minha: 
 
+### Questão 6
+
+R minha: 
+
+### Questão 7
+
+R minha: Sim, é possível que o saldo da aplicação fique negativo. Considere o seguinte caso:
+
+- Temos duas threads: T0 e T1;
+- T0: deseja retirar 5 unidades.
+- T0: Lê o saldo atual com lock e retorna 10.
+- T1: Recupera o lock e realiza ambas operação leitura e retirada.
+- T1: Lê o saldo atual com e retorna 10 assim como T0.
+- T1: Retira uma quantia de 10, restando 0 unidades no saldo.
+- T0: Recupera o lock e então retira as 5 unidades.
+- Saldo final: `saldo == -5.0`.
+
+### Questão 8
+
+R minha: O código referente a essa questão consta aqui: `./Questao\ 8.c`.
+
+### Questão 9
+
+
+
 ### Questão 10
 
 (a). O que aconteceu para ser impresso o valor 11?
@@ -88,14 +113,37 @@ R minha: O código completo está em `Questao\ 10\ -\ c.c`.
 
 (a). O que irá acontecer se as duas threads tentarem acessar a seção crítica ao mesmo tempo?
 
-R minha: Apenas uma das threads irá ter acesso à seção crítica, pois a sincronização depende da ordem de execução da instrução atômica de atribuição `turno = ...`. Isto é, se ambas as threads forem disparadas simultaneamente, aquela que executar a instrução na linha 4 por último dará direito para a outra executar.
+R minha: Apenas uma das threads irá ter acesso à seção crítica, pois a
+sincronização depende da ordem de execução da instrução atômica de atribuição
+`turno = ...`. Isto é, se ambas as threads forem disparadas simultaneamente,
+aquela que executar a instrução na linha 4 por último dará direito para a outra
+executar.
 
-No entanto, a seriação dessas atribuição só é possível de ser determinada em tempo de execução, ou seja, não sabemos a priori se a Thread 1 executará e vice-versa.
+No entanto, a seriação dessas atribuição só é possível de ser determinada em
+tempo de execução, ou seja, não sabemos a priori se a Thread 1 executará e
+vice-versa. Assim que uma das threads sair da seção crítica, ela 'setará'
+`querEntrar...=...` que, por sua vez, permitirá com que a outra Thread prossiga
+com a execução.
 
-(b). O que irá acontecer se uma das threads tentar acessar sozinha a seção crítica por várias vezes seguidas? Ela sofrerá alguma forma de contenção nesse caso?
+(b). O que irá acontecer se uma das threads tentar acessar sozinha a seção
+crítica por várias vezes seguidas? Ela sofrerá alguma forma de contenção nesse
+caso?
 
 R minha: O acesso à seção crítica é feito de forma intercalada entre as threads.
 
-(c). 
+Suponha que a Thread 0 esteja acessando a seção crítica. Assim que ela sair da
+SC, ela setará `querEntrar0=0` e isso terá como consequência a liberação Thread 1.
+Assim que a Thread 1 atingir o `while`, ela terá setado `turno = 1` que continuará permitindo a execução da outra Thread e que terá como consequência o seu próprio bloqueio.
+
+(c). O que acontecerá se uma thread tentar acessar a seção crítica quando a
+outra thread já estiver acessando e esta mesma thread (a que está na seção
+crítica), quando sair da seção crítica, tentar acessá-la novamente antes da
+thread que está esperando ganhar a CPU novamente?
+
+R minha: A própria Thread garante o seu próprio bloqueio por meio da definição da variável `turno`.
+
+(d). O código proposto garante a exclusão mútua no acesso à seção crítica?
+
+R minha: Sim, o código proposto garante a exclusão mútua e o acesso alternado e não simultaneo à SC.
  
 
