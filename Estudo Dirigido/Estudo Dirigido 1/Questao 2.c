@@ -61,6 +61,7 @@ void imprimir_vetor(int *arr, size_t dim, char *nome_vetor) {
 
 int main(int argc, char *argv[]) {
     srand(time(NULL));
+    pthread_mutex_init(&mutex, NULL);
     int *arr;
     int nthreads;
     size_t chunk;
