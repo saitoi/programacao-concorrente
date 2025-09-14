@@ -23,13 +23,13 @@ $(CONC_BIN): $(CONC_SRC)
 
 run: $(SEQ_BIN) $(CONC_BIN)
 	./$(SEQ_BIN) $(N)
-	./$(CONC_BIN) $(N) $(T)
+	./$(CONC_BIN) $(T) $(N)
 
 run-seq: $(SEQ_BIN)
 	./$(SEQ_BIN) $(N)
 
 run-conc: $(CONC_BIN)
-	./$(CONC_BIN) $(N) $(T)
+	./$(CONC_BIN) $(T) $(N)
 
 clean:
 	rm -f $(SEQ_BIN) $(CONC_BIN)
