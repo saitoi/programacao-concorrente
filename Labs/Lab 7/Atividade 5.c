@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <pthread.h>
 #include <semaphore.h>
 #include <math.h>
@@ -33,7 +34,7 @@ void init_vetor_random(int **vetor, int N) {
     (*vetor) = (int*) malloc(sizeof(int) * N);
     if ((*vetor) == NULL) {
         fprintf(stderr, "Erro durante a alocação da sequência de inteiros.\n");
-        return 1;
+        exit(1);
     }
     for (int i = 0; i < N; ++i)
         (*vetor)[i] = (int) (rand() % (MAX + 1));
@@ -56,16 +57,16 @@ int retira(int M, int *canal) {
     out = (out + 1) % M;
     sem_post(&vazio);
     sem_post(&mutex);
+    return aux;
 }
 
 void *produtora(void *args) {
     thread_args *arg = (thread_args*) args;
     int qtd_produzida = 0;
-    while (qtd_produzida != N) {
+    while (qtd_produzida != arg->N) {
         int aux = (arg->seq)[qtd_produzida];
-        sem_wait(&mutex);
+	printf("Valor a ser inserido: %d\n", aux);
         insere(aux, arg->M, arg->canal);
-        sem_post(&mutex);
         qtd_produzida++;
     }
     pthread_exit(NULL);
@@ -74,11 +75,10 @@ void *produtora(void *args) {
 void *consumidora(void *args) {
     thread_args *arg = (thread_args*) args;
     int qtd_consumida = 0, aux;
-    while (qtd_consumida != N) {
-        sem_wait(&mutex);
+    while (qtd_consumida != arg->N) {
         aux = retira(arg->M, arg->canal);
-        sem_post(&mutex);
         qtd_consumida++;
+	printf("Valor retirado: %d\n", aux);
         if (ehPrimo(aux)) qtd_primos++;
     }
     pthread_exit(NULL);
@@ -91,8 +91,6 @@ int main(int argc, char *argv[]) {
         M,      // Tamanho do canal de inteiros
         *canal, // Vetor do canal
         *seq;   // Sequência de números aleatórios
-
-    init_vetor_random(&seq);
 
     if (argc < 2) {
         fprintf(stderr, "Uso: %s <quantidade de inteiros produzidos> <tam do canal de inteiros>", argv[0]);
@@ -110,6 +108,8 @@ int main(int argc, char *argv[]) {
     sem_init(&mutex, 0, 1);
     sem_init(&cheio, 0, 0);
     sem_init(&vazio, 0, M);
+
+    init_vetor_random(&seq, N);
 
     canal = (int*) malloc(sizeof(int) * M);
     if (!canal) {
@@ -134,12 +134,16 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    printf("Vou criar as threads\n");
+    for (int i = 0; i < N; ++i)
+	    printf("seq[%d]: %d\n", i, seq[i]);
+
     if (pthread_create(&tids[0], NULL, produtora, (void*) arg)) {
         fprintf(stderr, "Erro durante a criação da thread produtora.\n");
         return 1;
     }
 
-    if (pthread_create(&tids[0], NULL, consumidora, (void*) arg)) {
+    if (pthread_create(&tids[1], NULL, consumidora, (void*) arg)) {
         fprintf(stderr, "Erro durante a criação da thread produtora.\n");
         return 1;
     }
