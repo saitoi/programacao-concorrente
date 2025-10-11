@@ -4,13 +4,16 @@ LDFLAGS = -lm
 TARGET = atividade1
 SRC = Atividade\ 1.c
 
+N ?= 100
+M ?= 10
+
 all: $(TARGET)
 
 $(TARGET): $(SRC)
 	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
 
 run: $(TARGET)
-	./$(TARGET) 100 10
+	./$(TARGET) $(N) $(M)
 
 clean:
 	rm -f $(TARGET)
