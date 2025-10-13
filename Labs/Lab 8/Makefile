@@ -6,14 +6,21 @@ SRC = Atividade\ 1.c
 
 N ?= 100
 M ?= 10
+I ?= -1
+VERBOSE ?=
+
+# Add -DVERBOSE flag if VERBOSE is set
+ifneq ($(VERBOSE),)
+	CFLAGS += -DVERBOSE
+endif
 
 all: $(TARGET)
 
 $(TARGET): $(SRC)
 	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
 
-run: $(TARGET)
-	./$(TARGET) $(N) $(M)
+run: clean $(TARGET)
+	./$(TARGET) $(N) $(M) $(I)
 
 clean:
 	rm -f $(TARGET)
