@@ -24,14 +24,9 @@
 #define LOG(fmt, ...) ((void)0)
 #endif
 
-
 typedef struct {
   int *buffer; // Buffer de tamanho M
-  int id,
-      N,
-      M,
-      inicio,
-      qtd_buffer;
+  int id, N, M, inicio, qtd_buffer;
 } thread_args;
 
 int qtd_buffer = 0;
@@ -51,17 +46,18 @@ static inline int ehPrimo(long long int n) {
   return 1;
 }
 
-/* Funções para gerar entradas sequenciais ou aleatórias */
+// Funções para gerar entradas sequenciais ou aleatórias
 
+// Ativa se for passado argv[3] (argc == 4)
 int *gerar_entradas_seq(int inicio, int dim) {
-    int *arr = (int *)malloc(sizeof(int) * dim);
-    if (!arr) {
-      fprintf(stderr, "Erro durante a alocação do vetor de int sequencial.\n");
-      pthread_exit(NULL);
-    }
-    for (int i = 0; i < dim; ++i)
-        arr[i] = i + inicio;
-    return arr;
+  int *arr = (int *)malloc(sizeof(int) * dim);
+  if (!arr) {
+    fprintf(stderr, "Erro durante a alocação do vetor de int sequencial.\n");
+    pthread_exit(NULL);
+  }
+  for (int i = 0; i < dim; ++i)
+    arr[i] = i + inicio;
+  return arr;
 }
 
 int *gerar_entradas_aleat(int dim) {
@@ -74,6 +70,8 @@ int *gerar_entradas_aleat(int dim) {
     arr[i] = (int)(rand() % (MAX + 1));
   return arr;
 }
+
+// Funções usadas pelas threads produtoras e consumidoras
 
 int retirar(int *buffer, int dim) {
   static int in = 0;
@@ -102,11 +100,14 @@ void inserir(int *buffer, int *entradas, int dim) {
   }
 }
 
+// Funções das threads produtoras e consumidoras
+
 void *produtora(void *args) {
   thread_args *t = (thread_args *)args;
-  int *entradas = (t->inicio > -1) ? gerar_entradas_seq(t->inicio, t->N) : gerar_entradas_aleat(t->N);
+  int *entradas = (t->inicio > -1) ? gerar_entradas_seq(t->inicio, t->N)
+                                   : gerar_entradas_aleat(t->N);
 #ifdef VERBOSE
-  fprintf(stderr, "[VERBOSE] Entrada aleatoria gerada: ");
+  fprintf(stderr, "[VERBOSE] Entrada gerada: ");
   for (int i = 0; i < t->N; i++)
     fprintf(stderr, "%d ", entradas[i]);
   fprintf(stderr, "\n");
@@ -115,7 +116,7 @@ void *produtora(void *args) {
     int qtd_inserir = ((t->N - i) < t->M) ? (t->N - i) : t->M;
     inserir(t->buffer, &entradas[i], qtd_inserir);
   }
-  pthread_exit((void*) entradas);
+  pthread_exit((void *)entradas);
 }
 
 void *consumidora(void *args) {
@@ -141,14 +142,16 @@ void *consumidora(void *args) {
 int main(int argc, char *argv[]) {
   srand(time(NULL));
   pthread_t *tids;
-  int N, // Quantidade de inteiros aleatorios gerados (int)
-      M, // Tamanho do canal (int)
+  int N,      // Quantidade de inteiros aleatorios gerados (int)
+      M,      // Tamanho do canal (int)
       inicio; // Parâmetro opcional para gerar um intervalo sequencial
-  int qtd_primos_total = 0, qtd_primos_seq = 0, qtd_primos_vencedora = 0, vencedora = 0;
+  int qtd_primos_total = 0, qtd_primos_seq = 0, qtd_primos_vencedora = 0,
+      vencedora = 0;
   int *entradas;
 
   if (argc < 3) {
-    fprintf(stderr, "Uso: %s <qtd. de inteiros gerados> <tamanho do canal> <inicio>\n",
+    fprintf(stderr,
+            "Uso: %s <qtd. de inteiros gerados> <tamanho do canal> <inicio>\n",
             argv[0]);
     return 1;
   }
@@ -167,9 +170,10 @@ int main(int argc, char *argv[]) {
   }
 
   LOG("Entrada:\n"
-         "- N: %d\n"
-         "- M: %d\n"
-         "- inicio: %d\n", N, M, inicio);
+      "\t  - N: %d\n"
+      "\t  - M: %d\n"
+      "\t  - inicio: %d\n",
+      N, M, inicio);
 
   tids = (pthread_t *)malloc(sizeof(pthread_t) * (1 + NTHREADS_CONS));
   if (!tids) {
@@ -208,16 +212,20 @@ int main(int argc, char *argv[]) {
   // Restante das threads consumidoras
   thread_args *args_cons[NTHREADS_CONS];
   for (int i = 1; i < NTHREADS_CONS + 1; ++i) {
-    args_cons[i-1] = (thread_args *)malloc(sizeof(thread_args));
-    if (!args_cons[i-1]) {
-      fprintf(stderr, "Erro durante a alocação da estrutura da thread consumidora %d.\n", i);
+    args_cons[i - 1] = (thread_args *)malloc(sizeof(thread_args));
+    if (!args_cons[i - 1]) {
+      fprintf(
+          stderr,
+          "Erro durante a alocação da estrutura da thread consumidora %d.\n",
+          i);
       return 1;
     }
-    args_cons[i-1]->id = i;
-    args_cons[i-1]->buffer = buffer;
-    args_cons[i-1]->N = N;
-    args_cons[i-1]->M = M;
-    if (pthread_create(&tids[i], NULL, consumidora, (void *)args_cons[i-1]) != 0) {
+    args_cons[i - 1]->id = i;
+    args_cons[i - 1]->buffer = buffer;
+    args_cons[i - 1]->N = N;
+    args_cons[i - 1]->M = M;
+    if (pthread_create(&tids[i], NULL, consumidora, (void *)args_cons[i - 1]) !=
+        0) {
       fprintf(stderr, "Erro durante a criação das threads consumidoras.\n");
       return 1;
     }
@@ -225,7 +233,7 @@ int main(int argc, char *argv[]) {
 
   // Join da thread produtora
   // Variável entradas para capturar o vetor gerado pela produtora
-  if (pthread_join(tids[0], (void**) &entradas) != 0) {
+  if (pthread_join(tids[0], (void **)&entradas) != 0) {
     fprintf(stderr, "Erro na junção da thread produtora.\n");
     return 1;
   }
@@ -233,7 +241,7 @@ int main(int argc, char *argv[]) {
   // Join das threads consumidoras
   for (int i = 1; i < NTHREADS_CONS + 1; ++i) {
     int *qtd_primos;
-    if (pthread_join(tids[i], (void**) &qtd_primos) != 0) {
+    if (pthread_join(tids[i], (void **)&qtd_primos) != 0) {
       fprintf(stderr, "Erro na junção das threads consumidoras.\n");
       return 1;
     }
@@ -243,7 +251,7 @@ int main(int argc, char *argv[]) {
       qtd_primos_vencedora = *qtd_primos;
     }
     free(qtd_primos);
-    free(args_cons[i-1]);
+    free(args_cons[i - 1]);
   }
 
   sem_destroy(&mutex);
@@ -252,8 +260,9 @@ int main(int argc, char *argv[]) {
 
   // Comparação com o sequencial
   for (int i = 0; i < N; ++i)
-      if (ehPrimo(entradas[i]))
-          qtd_primos_seq++;
+    if (ehPrimo(entradas[i]))
+      qtd_primos_seq++;
+
   // Impressão dos resultados
   printf("Quantidade total de primos: %d\n", qtd_primos_total);
   printf("Quantidade total de primos (seq): %d\n", qtd_primos_seq);
