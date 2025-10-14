@@ -12,7 +12,8 @@ Programa implementando o padrão produtor-consumidor com semáforos:
 Compilação manual:
 
 ```bash
-gcc -Wall -Wextra -O2 -pthread Atividade\ 1.c -o atividade1 -lm
+gcc -pthread -lm Atividade\ 1.c
+./a.out 1000 10 0 # <Qtd. inteiros gerados> <Tam do canal> <inicio (intervalo sequencial)>
 ```
 
 Execução com Makefile:
