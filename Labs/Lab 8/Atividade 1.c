@@ -15,22 +15,29 @@
 // Por padrão, os números gerados pela thread produtora são aleatórios.
 // No entanto, o usuário poderá passar um intervalo.
 
-#define MAX 1000
-#define NTHREADS_CONS 4
+/* ------------------- MACROS ------------------- */
 
+#define MAX 1000        // Número aleatório máximo gerado
+#define NTHREADS_CONS 4 // Número de threads consumidoras
+
+// Macro para exibir mensagem se a VERBOSE estiver definido
 #ifdef VERBOSE
 #define LOG(output, fmt, ...) fprintf(output, "[VERBOSE] " fmt, ##__VA_ARGS__)
 #else
 #define LOG(output, fmt, ...) ((void)0)
 #endif
 
+// Estrutura para os argumentos das threads
 typedef struct {
   int *buffer; // Buffer de tamanho M
   int id, N, M, inicio, qtd_buffer;
 } thread_args;
 
-int qtd_buffer = 0;
-sem_t mutex, vazio, cheio;
+// Variáveis globais
+int qtd_buffer = 0;         // Qtd. elementos no buffer
+sem_t mutex, vazio, cheio;  // Semáforos
+
+/* ------------------- EH PRIMO? ------------------- */
 
 static inline int ehPrimo(long long int n) {
   int i;
@@ -46,9 +53,9 @@ static inline int ehPrimo(long long int n) {
   return 1;
 }
 
-// Funções para gerar entradas sequenciais ou aleatórias
+/* ------------------- GERAR ENTRADAS (ALEATÓRIA / SEQUENCIAL) ------------------- */
 
-// Ativa se for passado argv[3] (argc == 4)
+// Inicializa as últimas posições com -1 para as threads consumidoras finalizarem
 int *gerar_entradas_seq(int inicio, int dim) {
   int *arr = (int *)malloc(sizeof(int) * dim);
   if (!arr) {
@@ -63,6 +70,7 @@ int *gerar_entradas_seq(int inicio, int dim) {
   return arr;
 }
 
+// Inicializa as últimas posições com -1 para as threads consumidoras finalizarem
 int *gerar_entradas_aleat(int dim) {
   int *arr = (int *)malloc(sizeof(int) * dim);
   if (!arr) {
@@ -77,7 +85,7 @@ int *gerar_entradas_aleat(int dim) {
   return arr;
 }
 
-// Funções usadas pelas threads produtoras e consumidoras
+/* ------------------- RETIRAR ------------------- */
 
 int retirar(int *buffer, int dim) {
   static int in = 0;
@@ -85,6 +93,7 @@ int retirar(int *buffer, int dim) {
   sem_wait(&cheio);
   sem_wait(&mutex);
   aux = buffer[in];
+  LOG(stdout, "Consumidora pegou: %d\n", buffer[in]);
   in = (in + 1) % dim;
   qtd_buffer--;
   if (qtd_buffer == 0)
@@ -93,12 +102,15 @@ int retirar(int *buffer, int dim) {
   return aux;
 }
 
+/* ------------------- INSERIR ------------------- */
+
 void inserir(int *buffer, int *entradas, int dim) {
   sem_wait(&vazio);
   sem_wait(&mutex);
   for (int i = 0; i < dim; ++i) {
     buffer[i] = entradas[i];
     qtd_buffer++;
+    LOG(stdout, "Produtora inseriu: %d\n", buffer[i]);
   }
   sem_post(&mutex);
   for (int i = 0; i < dim; ++i) {
@@ -106,13 +118,14 @@ void inserir(int *buffer, int *entradas, int dim) {
   }
 }
 
-// Funções das threads produtoras e consumidoras
+/* ------------------- PRODUTORA ------------------- */
 
 void *produtora(void *args) {
   thread_args *t = (thread_args *)args;
   int *entradas;
+  // Se início for positivo ou igual à zero, gera o intervalo sequencial [I, I + N)
   if (t->inicio > -1) {
-    LOG(stdout, "[VERBOSE] Entrada sequencial gerada:");
+    LOG(stdout, "Entrada sequencial gerada:");
     entradas = gerar_entradas_seq(t->inicio, t->N);
   } else {
     LOG(stdout, "[VERBOSE] Entrada aleatória gerada:");
@@ -132,6 +145,8 @@ void *produtora(void *args) {
   pthread_exit((void *)entradas);
 }
 
+/* ------------------- CONSUMIDORA ------------------- */
+
 void *consumidora(void *args) {
   thread_args *t = (thread_args *)args;
   int *qtd_primos = (int *)malloc(sizeof(int));
@@ -144,6 +159,7 @@ void *consumidora(void *args) {
   int aux;
   while (1) {
     aux = retirar(t->buffer, t->M);
+    // Threads consumidoras capturam o -1, sinalizando término
     if (aux == -1)
       break;
     if (ehPrimo(aux))
@@ -152,6 +168,8 @@ void *consumidora(void *args) {
   pthread_exit((void *)qtd_primos);
 }
 
+/* ------------------- MAIN ------------------- */
+
 int main(int argc, char *argv[]) {
   srand(time(NULL));
   pthread_t *tids;
@@ -159,7 +177,6 @@ int main(int argc, char *argv[]) {
       M,      // Tamanho do canal (int)
       inicio; // Parâmetro opcional para gerar um intervalo sequencial
   int qtd_primos_conc = 0,      // Quantidade de primos capturados pelas threads consumidoras
-      qtd_primos_seq = 0,       // Quantidade de primos na verificação sequencial
       qtd_primos_vencedora = 0, // Quantidade de primos da thread vencedora
       vencedora = 0;            // Id da thread vencedora (considerando só uma thread vencedora)
   int *entradas;
@@ -220,7 +237,8 @@ int main(int argc, char *argv[]) {
   arg->inicio = inicio;
   arg->buffer = buffer;
 
-  // 
+  // Argumento para thread produtora
+  // Qtd. inteiros gerados = N + "-1 para sinalizar encerramento das consumidoras"
   arg->N = N + NTHREADS_CONS;
   arg->M = M;
 
@@ -274,18 +292,24 @@ int main(int argc, char *argv[]) {
     free(args_cons[i - 1]);
   }
 
+  // Remoção dos semáforos
   sem_destroy(&mutex);
   sem_destroy(&vazio);
   sem_destroy(&cheio);
 
+
+  // Impressão dos resultados
+
   // Comparação com o sequencial para corretude
+  #ifdef VERBOSE
+  int qtd_primos_seq = 0;
   for (int i = 0; i < N; ++i)
     if (ehPrimo(entradas[i]))
       qtd_primos_seq++;
-
-  // Impressão dos resultados
-  printf("Quantidade total de primos: %d\n", qtd_primos_conc);
   printf("Quantidade total de primos (seq): %d\n", qtd_primos_seq);
+  #endif
+
+  printf("Quantidade total de primos: %d\n", qtd_primos_conc);
   printf("Thread %d foi a vencedora com %d primos.\n", vencedora,
          qtd_primos_vencedora);
 

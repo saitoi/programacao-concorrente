@@ -16,7 +16,7 @@ gcc -pthread -lm Atividade\ 1.c
 ./a.out 1000 10 0 # <Qtd. inteiros gerados> <Tam do canal> <inicio (intervalo sequencial)>
 ```
 
-Execução com Makefile:
+Execução com Makefile **(Preferencial)**:
 
 ```bash
 make run
@@ -32,6 +32,14 @@ Parâmetros do Makefile:
 | `VERBOSE` | - | Ativa logs de debug (qualquer valor não vazio) |
 
 ### Exemplos de Uso
+
+Executando o binário:
+
+```bash
+# Uso: ./a.out <N> <M> <inicio>
+# Parâmetro <inicio> é opcional
+./a.out 100 10
+```
 
 Inteiros gerados aleatoriamente:
 
@@ -63,13 +71,22 @@ make run N=500 M=25 I=0 VERBOSE=1
 
 Os testes verificam se a contagem de primos concorrente corresponde à sequencial.
 
-Características avaliadas:
+### Casos avaliados:
 
-| Comando | Intervalo | Primos Esperados |
+- Buffer pequeno em comparação à quantidade de inteiros.
+- Intervalo sequencial suficientemente grande.
+
+### Resultados
+
+| Comando | Intervalo | Primos Obtidos/Esperados |
 |---------|-----------|------------------|
-| `make run I=0 N=10000 M=500` | [0, 10000) | 1229 |
+| `make run I=0 N=100 M=5` | [0, 99] | 25 |
 | `make run I=0 N=50000 M=1000` | [0, 50000) | 5133 |
 | `make run I=0 N=100000 M=2000` | [0, 100000) | 9592 |
+
+### Tratamento de erro
+
+
 
 ### Casos Especiais
 
