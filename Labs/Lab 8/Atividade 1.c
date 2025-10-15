@@ -53,8 +53,7 @@ static inline int ehPrimo(long long int n) {
   return 1;
 }
 
-/* ------------------- GERAR ENTRADAS (ALEATÓRIA / SEQUENCIAL)
- * ------------------- */
+/* ------------------- GERAR ENTRADAS (ALEATÓRIA / SEQUENCIAL) * ------------------- */
 
 // Inicializa as últimas posições com -1 para as threads consumidoras
 // finalizarem
