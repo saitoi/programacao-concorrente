@@ -1,0 +1,20 @@
+rm -f atividade1
+gcc -Wall -Wextra -O2 -pthread -DVERBOSE -o atividade1 Atividade\ 1.c -lm
+./atividade1 100000000 100 -1
+[VERBOSE] Entrada:
+	  - N: 100000000
+	  - M: 100
+	  - inicio: -1
+
+... Output ficou muito grande aqui então removi essa parte
+
+[VERBOSE] Consumidora pegou: -1
+[VERBOSE] Consumidora pegou: -1
+[VERBOSE] Consumidora pegou: -1
+[VERBOSE] Thread 1 consumiu 4175368 primos.
+[VERBOSE] Thread 2 consumiu 4174604 primos.
+[VERBOSE] Thread 3 consumiu 4247321 primos.
+[VERBOSE] Thread 4 consumiu 4185025 primos.
+Quantidade total de primos (seq): 16782318
+Quantidade total de primos: 16782318
+Thread 3 foi a vencedora com 4247321 primos.
