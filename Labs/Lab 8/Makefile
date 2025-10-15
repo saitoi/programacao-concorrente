@@ -9,7 +9,6 @@ M ?= 10
 I ?= -1
 VERBOSE ?=
 
-# Add -DVERBOSE flag if VERBOSE is set
 ifneq ($(VERBOSE),)
 	CFLAGS += -DVERBOSE
 endif
