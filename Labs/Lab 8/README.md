@@ -69,45 +69,56 @@ make run N=500 M=25 I=0 VERBOSE=1
 
 ## Casos de Teste de Corretude
 
-Os testes verificam se a contagem de primos concorrente corresponde à sequencial.
+A corretude do programa foi avaliada tendo como base o programa sequencial. O programa permite gerar um intervalo sequencial (ex. [0, 1.000.000] com N = 1.000.000) ou gerar inteiros aleatórios (padrão).
 
-### Casos avaliados:
+Para facilitar a avaliação da corretude, use a flag `-DVERBOSE` durante a compilação (ou `VERBOSE=1` no `make run`) para habilitar o log de cada thread e a execução do programa sequencial para comparação.
 
-- Buffer pequeno em comparação à quantidade de inteiros.
-- Intervalo sequencial suficientemente grande.
+### Testes com intervalo sequencial (M = 5)
 
-### Resultados
-
-| Comando | Intervalo | Primos Obtidos/Esperados |
-|---------|-----------|------------------|
+| Comando | Intervalo | Primos Obtidos |
+|---------|-----------|----------------|
 | `make run I=0 N=100 M=5` | [0, 99] | 25 |
-| `make run I=0 N=50000 M=1000` | [0, 50000) | 5133 |
-| `make run I=0 N=100000 M=2000` | [0, 100000) | 9592 |
+| `make run I=0 N=1000 M=5` | [0, 999] | 168 |
+| `make run I=0 N=10000 M=5` | [0, 9999] | 1229 |
+
+### Testes com valores aleatórios
+
+| Comando | Qtd. Inteiros | Primos Obtidos |
+|---------|---------------|----------------|
+| `make run N=1000000 M=10` | 1.000.000 | 167724 |
+| `make run N=100000000 M=100` | 100.000.000 | 16782318 |
+
+**Observação**: Nos testes com valores aleatórios, a quantidade de inteiros pode exceder bastante o tamanho do canal, testando a robustez da sincronização.
 
 ### Tratamento de erro
 
+O programa valida se:
+- A quantidade de inteiros gerados é maior que o tamanho do canal (M < N)
+- Ambos os valores N e M são positivos
 
-
-### Casos Especiais
-
-**Buffer pequeno (teste de sincronização):**
-```bash
-make run I=0 N=1000 M=10  # Deve dar 168 primos
-make run I=0 N=1000 M=1   # Buffer mínimo - 168 primos
-```
-
-Números aleatórios (não determinístico):
+Exemplo de erro:
 
 ```bash
-make run N=10000 M=500  # Verificar apenas se seq == concorrente
+# Uso: ./atividade1 <N> <M> (<inicio> opcional)
+./atividade1 10 100
+Entrada de qtd. inteiros gerados ou o tamanho do canal são inválidos.
+- Ambas as entradas devem ser positivas.
+- O tamanho do canal deve ser estritamente menor que a qtd. de inteiros.
 ```
+
+
 
 ## Validação
 
-O programa imprime três valores ao final:
+O programa imprime ao final:
 
-- **Quantidade total de primos**: Resultado das threads consumidoras
+- **Quantidade total de primos**: Resultado das threads consumidoras (concorrente)
 
-- **Quantidade total de primos (seq)**: Verificação sequencial
+- **Quantidade total de primos (seq)**: Verificação sequencial para comparação
 
-- **Thread vencedora**: Thread que encontrou mais primos
+- **Thread vencedora**: Thread que encontrou mais primos, juntamente com o número de primos coletado por ela
+
+Com a macro `VERBOSE` definida (via `VERBOSE=1` no `make run`), o programa também imprime:
+- Log detalhado de cada thread durante a execução
+- Quantidade de primos coletada individualmente por cada thread consumidora
+- Execução completa do programa sequencial para comparação
