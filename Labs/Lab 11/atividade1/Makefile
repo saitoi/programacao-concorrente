@@ -30,6 +30,7 @@ test: all
 		else \
 			echo "$(RED)FALHA para N=$$N$(RESET)"; \
 			diff -y --width=120 seq.out conc.out; \
+			exit 1; \
 		fi; \
 	done
 	@echo "$(GREEN)Todos os testes passaram!$(RESET)"
