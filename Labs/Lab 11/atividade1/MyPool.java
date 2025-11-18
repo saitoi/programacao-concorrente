@@ -110,17 +110,19 @@ class MyPool {
       //--PASSO 2: cria o pool de threads
       FilaTarefas pool = new FilaTarefas(NTHREADS); 
       int n;
+
+      // Uso da linha de comando
+      if (args.length != 1)
+          throw new IllegalArgumentException("Uso: java MyPool <numero primo maximo: int>");
+
       // Parsing da entrada
-      if (args.length != 1) {
-          System.out.println("Uso: java MyPool <numero primo maximo: int>");
-          System.exit(1);
-      }
-      // Verifica se o número é válido, ie, maior que zero
       n = Integer.parseInt(args[0]);
+      // Verifica se o número é válido, ie, maior que zero
       if (n < 1) {
           System.out.println("Entrada deve ser maior que zero.");
           System.exit(1);
       }
+
       //--PASSO 3: dispara a execução dos objetos runnable usando o pool de threads
       System.out.println("Primos encontrados:");
       for (int i = 0; i < n; i++) {
