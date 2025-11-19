@@ -1,0 +1,762 @@
+Running FuturePool (concurrent)...
+======================================
+=== Testing with 1 threads ===
+======================================
+=== N=-100, NTHREADS=1 ===
+N deve ser maior que 1
+
+=== N=-50, NTHREADS=1 ===
+N deve ser maior que 1
+
+=== N=-1, NTHREADS=1 ===
+N deve ser maior que 1
+
+=== N=0, NTHREADS=1 ===
+N deve ser maior que 1
+
+=== N=10, NTHREADS=1 ===
+Quantidade de números primos encontrados: 4
+
+=== N=20, NTHREADS=1 ===
+Quantidade de números primos encontrados: 8
+
+=== N=30, NTHREADS=1 ===
+Quantidade de números primos encontrados: 10
+
+=== N=50, NTHREADS=1 ===
+Quantidade de números primos encontrados: 15
+
+=== N=75, NTHREADS=1 ===
+Quantidade de números primos encontrados: 21
+
+=== N=100, NTHREADS=1 ===
+Quantidade de números primos encontrados: 25
+
+=== N=123, NTHREADS=1 ===
+Quantidade de números primos encontrados: 30
+
+=== N=150, NTHREADS=1 ===
+Quantidade de números primos encontrados: 35
+
+=== N=189, NTHREADS=1 ===
+Quantidade de números primos encontrados: 42
+
+=== N=200, NTHREADS=1 ===
+Quantidade de números primos encontrados: 46
+
+=== N=231, NTHREADS=1 ===
+Quantidade de números primos encontrados: 50
+
+=== N=250, NTHREADS=1 ===
+Quantidade de números primos encontrados: 53
+
+=== N=289, NTHREADS=1 ===
+Quantidade de números primos encontrados: 61
+
+=== N=300, NTHREADS=1 ===
+Quantidade de números primos encontrados: 62
+
+=== N=333, NTHREADS=1 ===
+Quantidade de números primos encontrados: 67
+
+=== N=350, NTHREADS=1 ===
+Quantidade de números primos encontrados: 70
+
+=== N=355, NTHREADS=1 ===
+Quantidade de números primos encontrados: 71
+
+=== N=400, NTHREADS=1 ===
+Quantidade de números primos encontrados: 78
+
+=== N=450, NTHREADS=1 ===
+Quantidade de números primos encontrados: 87
+
+=== N=500, NTHREADS=1 ===
+Quantidade de números primos encontrados: 95
+
+=== N=550, NTHREADS=1 ===
+Quantidade de números primos encontrados: 101
+
+=== N=999, NTHREADS=1 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1000, NTHREADS=1 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1890, NTHREADS=1 ===
+Quantidade de números primos encontrados: 290
+
+=== N=10000, NTHREADS=1 ===
+Quantidade de números primos encontrados: 1229
+
+=== N=12399, NTHREADS=1 ===
+Quantidade de números primos encontrados: 1479
+
+=== N=100000, NTHREADS=1 ===
+Quantidade de números primos encontrados: 9592
+
+=== N=109089, NTHREADS=1 ===
+Quantidade de números primos encontrados: 10371
+
+=== N=1000000, NTHREADS=1 ===
+Quantidade de números primos encontrados: 78498
+
+=== N=1959823, NTHREADS=1 ===
+Quantidade de números primos encontrados: 146173
+
+=== N=10000000, NTHREADS=1 ===
+Quantidade de números primos encontrados: 664579
+
+
+======================================
+=== Testing with 2 threads ===
+======================================
+=== N=-100, NTHREADS=2 ===
+N deve ser maior que 1
+
+=== N=-50, NTHREADS=2 ===
+N deve ser maior que 1
+
+=== N=-1, NTHREADS=2 ===
+N deve ser maior que 1
+
+=== N=0, NTHREADS=2 ===
+N deve ser maior que 1
+
+=== N=10, NTHREADS=2 ===
+Quantidade de números primos encontrados: 4
+
+=== N=20, NTHREADS=2 ===
+Quantidade de números primos encontrados: 8
+
+=== N=30, NTHREADS=2 ===
+Quantidade de números primos encontrados: 10
+
+=== N=50, NTHREADS=2 ===
+Quantidade de números primos encontrados: 15
+
+=== N=75, NTHREADS=2 ===
+Quantidade de números primos encontrados: 21
+
+=== N=100, NTHREADS=2 ===
+Quantidade de números primos encontrados: 25
+
+=== N=123, NTHREADS=2 ===
+Quantidade de números primos encontrados: 30
+
+=== N=150, NTHREADS=2 ===
+Quantidade de números primos encontrados: 35
+
+=== N=189, NTHREADS=2 ===
+Quantidade de números primos encontrados: 42
+
+=== N=200, NTHREADS=2 ===
+Quantidade de números primos encontrados: 46
+
+=== N=231, NTHREADS=2 ===
+Quantidade de números primos encontrados: 50
+
+=== N=250, NTHREADS=2 ===
+Quantidade de números primos encontrados: 53
+
+=== N=289, NTHREADS=2 ===
+Quantidade de números primos encontrados: 61
+
+=== N=300, NTHREADS=2 ===
+Quantidade de números primos encontrados: 62
+
+=== N=333, NTHREADS=2 ===
+Quantidade de números primos encontrados: 67
+
+=== N=350, NTHREADS=2 ===
+Quantidade de números primos encontrados: 70
+
+=== N=355, NTHREADS=2 ===
+Quantidade de números primos encontrados: 71
+
+=== N=400, NTHREADS=2 ===
+Quantidade de números primos encontrados: 78
+
+=== N=450, NTHREADS=2 ===
+Quantidade de números primos encontrados: 87
+
+=== N=500, NTHREADS=2 ===
+Quantidade de números primos encontrados: 95
+
+=== N=550, NTHREADS=2 ===
+Quantidade de números primos encontrados: 101
+
+=== N=999, NTHREADS=2 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1000, NTHREADS=2 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1890, NTHREADS=2 ===
+Quantidade de números primos encontrados: 290
+
+=== N=10000, NTHREADS=2 ===
+Quantidade de números primos encontrados: 1229
+
+=== N=12399, NTHREADS=2 ===
+Quantidade de números primos encontrados: 1479
+
+=== N=100000, NTHREADS=2 ===
+Quantidade de números primos encontrados: 9592
+
+=== N=109089, NTHREADS=2 ===
+Quantidade de números primos encontrados: 10371
+
+=== N=1000000, NTHREADS=2 ===
+Quantidade de números primos encontrados: 78498
+
+=== N=1959823, NTHREADS=2 ===
+Quantidade de números primos encontrados: 146173
+
+=== N=10000000, NTHREADS=2 ===
+Quantidade de números primos encontrados: 664579
+
+
+======================================
+=== Testing with 4 threads ===
+======================================
+=== N=-100, NTHREADS=4 ===
+N deve ser maior que 1
+
+=== N=-50, NTHREADS=4 ===
+N deve ser maior que 1
+
+=== N=-1, NTHREADS=4 ===
+N deve ser maior que 1
+
+=== N=0, NTHREADS=4 ===
+N deve ser maior que 1
+
+=== N=10, NTHREADS=4 ===
+Quantidade de números primos encontrados: 4
+
+=== N=20, NTHREADS=4 ===
+Quantidade de números primos encontrados: 8
+
+=== N=30, NTHREADS=4 ===
+Quantidade de números primos encontrados: 10
+
+=== N=50, NTHREADS=4 ===
+Quantidade de números primos encontrados: 15
+
+=== N=75, NTHREADS=4 ===
+Quantidade de números primos encontrados: 21
+
+=== N=100, NTHREADS=4 ===
+Quantidade de números primos encontrados: 25
+
+=== N=123, NTHREADS=4 ===
+Quantidade de números primos encontrados: 30
+
+=== N=150, NTHREADS=4 ===
+Quantidade de números primos encontrados: 35
+
+=== N=189, NTHREADS=4 ===
+Quantidade de números primos encontrados: 42
+
+=== N=200, NTHREADS=4 ===
+Quantidade de números primos encontrados: 46
+
+=== N=231, NTHREADS=4 ===
+Quantidade de números primos encontrados: 50
+
+=== N=250, NTHREADS=4 ===
+Quantidade de números primos encontrados: 53
+
+=== N=289, NTHREADS=4 ===
+Quantidade de números primos encontrados: 61
+
+=== N=300, NTHREADS=4 ===
+Quantidade de números primos encontrados: 62
+
+=== N=333, NTHREADS=4 ===
+Quantidade de números primos encontrados: 67
+
+=== N=350, NTHREADS=4 ===
+Quantidade de números primos encontrados: 70
+
+=== N=355, NTHREADS=4 ===
+Quantidade de números primos encontrados: 71
+
+=== N=400, NTHREADS=4 ===
+Quantidade de números primos encontrados: 78
+
+=== N=450, NTHREADS=4 ===
+Quantidade de números primos encontrados: 87
+
+=== N=500, NTHREADS=4 ===
+Quantidade de números primos encontrados: 95
+
+=== N=550, NTHREADS=4 ===
+Quantidade de números primos encontrados: 101
+
+=== N=999, NTHREADS=4 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1000, NTHREADS=4 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1890, NTHREADS=4 ===
+Quantidade de números primos encontrados: 290
+
+=== N=10000, NTHREADS=4 ===
+Quantidade de números primos encontrados: 1229
+
+=== N=12399, NTHREADS=4 ===
+Quantidade de números primos encontrados: 1479
+
+=== N=100000, NTHREADS=4 ===
+Quantidade de números primos encontrados: 9592
+
+=== N=109089, NTHREADS=4 ===
+Quantidade de números primos encontrados: 10371
+
+=== N=1000000, NTHREADS=4 ===
+Quantidade de números primos encontrados: 78498
+
+=== N=1959823, NTHREADS=4 ===
+Quantidade de números primos encontrados: 146173
+
+=== N=10000000, NTHREADS=4 ===
+Quantidade de números primos encontrados: 664579
+
+
+======================================
+=== Testing with 6 threads ===
+======================================
+=== N=-100, NTHREADS=6 ===
+N deve ser maior que 1
+
+=== N=-50, NTHREADS=6 ===
+N deve ser maior que 1
+
+=== N=-1, NTHREADS=6 ===
+N deve ser maior que 1
+
+=== N=0, NTHREADS=6 ===
+N deve ser maior que 1
+
+=== N=10, NTHREADS=6 ===
+Quantidade de números primos encontrados: 4
+
+=== N=20, NTHREADS=6 ===
+Quantidade de números primos encontrados: 8
+
+=== N=30, NTHREADS=6 ===
+Quantidade de números primos encontrados: 10
+
+=== N=50, NTHREADS=6 ===
+Quantidade de números primos encontrados: 15
+
+=== N=75, NTHREADS=6 ===
+Quantidade de números primos encontrados: 21
+
+=== N=100, NTHREADS=6 ===
+Quantidade de números primos encontrados: 25
+
+=== N=123, NTHREADS=6 ===
+Quantidade de números primos encontrados: 30
+
+=== N=150, NTHREADS=6 ===
+Quantidade de números primos encontrados: 35
+
+=== N=189, NTHREADS=6 ===
+Quantidade de números primos encontrados: 42
+
+=== N=200, NTHREADS=6 ===
+Quantidade de números primos encontrados: 46
+
+=== N=231, NTHREADS=6 ===
+Quantidade de números primos encontrados: 50
+
+=== N=250, NTHREADS=6 ===
+Quantidade de números primos encontrados: 53
+
+=== N=289, NTHREADS=6 ===
+Quantidade de números primos encontrados: 61
+
+=== N=300, NTHREADS=6 ===
+Quantidade de números primos encontrados: 62
+
+=== N=333, NTHREADS=6 ===
+Quantidade de números primos encontrados: 67
+
+=== N=350, NTHREADS=6 ===
+Quantidade de números primos encontrados: 70
+
+=== N=355, NTHREADS=6 ===
+Quantidade de números primos encontrados: 71
+
+=== N=400, NTHREADS=6 ===
+Quantidade de números primos encontrados: 78
+
+=== N=450, NTHREADS=6 ===
+Quantidade de números primos encontrados: 87
+
+=== N=500, NTHREADS=6 ===
+Quantidade de números primos encontrados: 95
+
+=== N=550, NTHREADS=6 ===
+Quantidade de números primos encontrados: 101
+
+=== N=999, NTHREADS=6 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1000, NTHREADS=6 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1890, NTHREADS=6 ===
+Quantidade de números primos encontrados: 290
+
+=== N=10000, NTHREADS=6 ===
+Quantidade de números primos encontrados: 1229
+
+=== N=12399, NTHREADS=6 ===
+Quantidade de números primos encontrados: 1479
+
+=== N=100000, NTHREADS=6 ===
+Quantidade de números primos encontrados: 9592
+
+=== N=109089, NTHREADS=6 ===
+Quantidade de números primos encontrados: 10371
+
+=== N=1000000, NTHREADS=6 ===
+Quantidade de números primos encontrados: 78498
+
+=== N=1959823, NTHREADS=6 ===
+Quantidade de números primos encontrados: 146173
+
+=== N=10000000, NTHREADS=6 ===
+Quantidade de números primos encontrados: 664579
+
+
+======================================
+=== Testing with 8 threads ===
+======================================
+=== N=-100, NTHREADS=8 ===
+N deve ser maior que 1
+
+=== N=-50, NTHREADS=8 ===
+N deve ser maior que 1
+
+=== N=-1, NTHREADS=8 ===
+N deve ser maior que 1
+
+=== N=0, NTHREADS=8 ===
+N deve ser maior que 1
+
+=== N=10, NTHREADS=8 ===
+Quantidade de números primos encontrados: 4
+
+=== N=20, NTHREADS=8 ===
+Quantidade de números primos encontrados: 8
+
+=== N=30, NTHREADS=8 ===
+Quantidade de números primos encontrados: 10
+
+=== N=50, NTHREADS=8 ===
+Quantidade de números primos encontrados: 15
+
+=== N=75, NTHREADS=8 ===
+Quantidade de números primos encontrados: 21
+
+=== N=100, NTHREADS=8 ===
+Quantidade de números primos encontrados: 25
+
+=== N=123, NTHREADS=8 ===
+Quantidade de números primos encontrados: 30
+
+=== N=150, NTHREADS=8 ===
+Quantidade de números primos encontrados: 35
+
+=== N=189, NTHREADS=8 ===
+Quantidade de números primos encontrados: 42
+
+=== N=200, NTHREADS=8 ===
+Quantidade de números primos encontrados: 46
+
+=== N=231, NTHREADS=8 ===
+Quantidade de números primos encontrados: 50
+
+=== N=250, NTHREADS=8 ===
+Quantidade de números primos encontrados: 53
+
+=== N=289, NTHREADS=8 ===
+Quantidade de números primos encontrados: 61
+
+=== N=300, NTHREADS=8 ===
+Quantidade de números primos encontrados: 62
+
+=== N=333, NTHREADS=8 ===
+Quantidade de números primos encontrados: 67
+
+=== N=350, NTHREADS=8 ===
+Quantidade de números primos encontrados: 70
+
+=== N=355, NTHREADS=8 ===
+Quantidade de números primos encontrados: 71
+
+=== N=400, NTHREADS=8 ===
+Quantidade de números primos encontrados: 78
+
+=== N=450, NTHREADS=8 ===
+Quantidade de números primos encontrados: 87
+
+=== N=500, NTHREADS=8 ===
+Quantidade de números primos encontrados: 95
+
+=== N=550, NTHREADS=8 ===
+Quantidade de números primos encontrados: 101
+
+=== N=999, NTHREADS=8 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1000, NTHREADS=8 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1890, NTHREADS=8 ===
+Quantidade de números primos encontrados: 290
+
+=== N=10000, NTHREADS=8 ===
+Quantidade de números primos encontrados: 1229
+
+=== N=12399, NTHREADS=8 ===
+Quantidade de números primos encontrados: 1479
+
+=== N=100000, NTHREADS=8 ===
+Quantidade de números primos encontrados: 9592
+
+=== N=109089, NTHREADS=8 ===
+Quantidade de números primos encontrados: 10371
+
+=== N=1000000, NTHREADS=8 ===
+Quantidade de números primos encontrados: 78498
+
+=== N=1959823, NTHREADS=8 ===
+Quantidade de números primos encontrados: 146173
+
+=== N=10000000, NTHREADS=8 ===
+Quantidade de números primos encontrados: 664579
+
+
+======================================
+=== Testing with 16 threads ===
+======================================
+=== N=-100, NTHREADS=16 ===
+N deve ser maior que 1
+
+=== N=-50, NTHREADS=16 ===
+N deve ser maior que 1
+
+=== N=-1, NTHREADS=16 ===
+N deve ser maior que 1
+
+=== N=0, NTHREADS=16 ===
+N deve ser maior que 1
+
+=== N=10, NTHREADS=16 ===
+Quantidade de números primos encontrados: 4
+
+=== N=20, NTHREADS=16 ===
+Quantidade de números primos encontrados: 8
+
+=== N=30, NTHREADS=16 ===
+Quantidade de números primos encontrados: 10
+
+=== N=50, NTHREADS=16 ===
+Quantidade de números primos encontrados: 15
+
+=== N=75, NTHREADS=16 ===
+Quantidade de números primos encontrados: 21
+
+=== N=100, NTHREADS=16 ===
+Quantidade de números primos encontrados: 25
+
+=== N=123, NTHREADS=16 ===
+Quantidade de números primos encontrados: 30
+
+=== N=150, NTHREADS=16 ===
+Quantidade de números primos encontrados: 35
+
+=== N=189, NTHREADS=16 ===
+Quantidade de números primos encontrados: 42
+
+=== N=200, NTHREADS=16 ===
+Quantidade de números primos encontrados: 46
+
+=== N=231, NTHREADS=16 ===
+Quantidade de números primos encontrados: 50
+
+=== N=250, NTHREADS=16 ===
+Quantidade de números primos encontrados: 53
+
+=== N=289, NTHREADS=16 ===
+Quantidade de números primos encontrados: 61
+
+=== N=300, NTHREADS=16 ===
+Quantidade de números primos encontrados: 62
+
+=== N=333, NTHREADS=16 ===
+Quantidade de números primos encontrados: 67
+
+=== N=350, NTHREADS=16 ===
+Quantidade de números primos encontrados: 70
+
+=== N=355, NTHREADS=16 ===
+Quantidade de números primos encontrados: 71
+
+=== N=400, NTHREADS=16 ===
+Quantidade de números primos encontrados: 78
+
+=== N=450, NTHREADS=16 ===
+Quantidade de números primos encontrados: 87
+
+=== N=500, NTHREADS=16 ===
+Quantidade de números primos encontrados: 95
+
+=== N=550, NTHREADS=16 ===
+Quantidade de números primos encontrados: 101
+
+=== N=999, NTHREADS=16 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1000, NTHREADS=16 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1890, NTHREADS=16 ===
+Quantidade de números primos encontrados: 290
+
+=== N=10000, NTHREADS=16 ===
+Quantidade de números primos encontrados: 1229
+
+=== N=12399, NTHREADS=16 ===
+Quantidade de números primos encontrados: 1479
+
+=== N=100000, NTHREADS=16 ===
+Quantidade de números primos encontrados: 9592
+
+=== N=109089, NTHREADS=16 ===
+Quantidade de números primos encontrados: 10371
+
+=== N=1000000, NTHREADS=16 ===
+Quantidade de números primos encontrados: 78498
+
+=== N=1959823, NTHREADS=16 ===
+Quantidade de números primos encontrados: 146173
+
+=== N=10000000, NTHREADS=16 ===
+Quantidade de números primos encontrados: 664579
+
+
+======================================
+=== Testing with 32 threads ===
+======================================
+=== N=-100, NTHREADS=32 ===
+N deve ser maior que 1
+
+=== N=-50, NTHREADS=32 ===
+N deve ser maior que 1
+
+=== N=-1, NTHREADS=32 ===
+N deve ser maior que 1
+
+=== N=0, NTHREADS=32 ===
+N deve ser maior que 1
+
+=== N=10, NTHREADS=32 ===
+Quantidade de números primos encontrados: 4
+
+=== N=20, NTHREADS=32 ===
+Quantidade de números primos encontrados: 8
+
+=== N=30, NTHREADS=32 ===
+Quantidade de números primos encontrados: 10
+
+=== N=50, NTHREADS=32 ===
+Quantidade de números primos encontrados: 15
+
+=== N=75, NTHREADS=32 ===
+Quantidade de números primos encontrados: 21
+
+=== N=100, NTHREADS=32 ===
+Quantidade de números primos encontrados: 25
+
+=== N=123, NTHREADS=32 ===
+Quantidade de números primos encontrados: 30
+
+=== N=150, NTHREADS=32 ===
+Quantidade de números primos encontrados: 35
+
+=== N=189, NTHREADS=32 ===
+Quantidade de números primos encontrados: 42
+
+=== N=200, NTHREADS=32 ===
+Quantidade de números primos encontrados: 46
+
+=== N=231, NTHREADS=32 ===
+Quantidade de números primos encontrados: 50
+
+=== N=250, NTHREADS=32 ===
+Quantidade de números primos encontrados: 53
+
+=== N=289, NTHREADS=32 ===
+Quantidade de números primos encontrados: 61
+
+=== N=300, NTHREADS=32 ===
+Quantidade de números primos encontrados: 62
+
+=== N=333, NTHREADS=32 ===
+Quantidade de números primos encontrados: 67
+
+=== N=350, NTHREADS=32 ===
+Quantidade de números primos encontrados: 70
+
+=== N=355, NTHREADS=32 ===
+Quantidade de números primos encontrados: 71
+
+=== N=400, NTHREADS=32 ===
+Quantidade de números primos encontrados: 78
+
+=== N=450, NTHREADS=32 ===
+Quantidade de números primos encontrados: 87
+
+=== N=500, NTHREADS=32 ===
+Quantidade de números primos encontrados: 95
+
+=== N=550, NTHREADS=32 ===
+Quantidade de números primos encontrados: 101
+
+=== N=999, NTHREADS=32 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1000, NTHREADS=32 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1890, NTHREADS=32 ===
+Quantidade de números primos encontrados: 290
+
+=== N=10000, NTHREADS=32 ===
+Quantidade de números primos encontrados: 1229
+
+=== N=12399, NTHREADS=32 ===
+Quantidade de números primos encontrados: 1479
+
+=== N=100000, NTHREADS=32 ===
+Quantidade de números primos encontrados: 9592
+
+=== N=109089, NTHREADS=32 ===
+Quantidade de números primos encontrados: 10371
+
+=== N=1000000, NTHREADS=32 ===
+Quantidade de números primos encontrados: 78498
+
+=== N=1959823, NTHREADS=32 ===
+Quantidade de números primos encontrados: 146173
+
+=== N=10000000, NTHREADS=32 ===
+Quantidade de números primos encontrados: 664579

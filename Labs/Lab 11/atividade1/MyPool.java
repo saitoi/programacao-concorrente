@@ -32,6 +32,8 @@ class FilaTarefas {
         synchronized(queue) {
             if (this.shutdown) return;
             queue.addLast(r);
+            // Notifica alguma thread para executar a tarefa
+            // Não sabemos quem foi notificado, logo precisa do notifyAll no shutdown
             queue.notify();
         }
     }
@@ -42,7 +44,7 @@ class FilaTarefas {
     public void shutdown() {
         synchronized(queue) {
             this.shutdown=true; // Garante que novas tarefas não sejam adicionadas
-            queue.notifyAll();  // Notifica todas as threads prosseguir
+            queue.notifyAll();  // Notifica todas as threads terminar a execução
         }
         for (int i=0; i<nThreads; i++) {
           try { threads[i].join(); } catch (InterruptedException e) { return; }
@@ -107,21 +109,24 @@ class MyPool {
     private static final int NTHREADS = 10;
 
     public static void main (String[] args) {
-      //--PASSO 2: cria o pool de threads
-      FilaTarefas pool = new FilaTarefas(NTHREADS); 
-      int n;
+      int n, nthreads;
 
       // Uso da linha de comando
-      if (args.length != 1)
-          throw new IllegalArgumentException("Uso: java MyPool <numero primo maximo: int>");
+      if (args.length < 1 || args.length > 2)
+          throw new IllegalArgumentException("Uso: java MyPool <numero primo maximo: int> [nthreads: int]");
 
       // Parsing da entrada
       n = Integer.parseInt(args[0]);
+      nthreads = (args.length == 2) ? Integer.parseInt(args[1]) : NTHREADS;
+
       // Verifica se o número é válido, ie, maior que zero
       if (n < 1) {
           System.out.println("Entrada deve ser maior que zero.");
           System.exit(1);
       }
+
+      //--PASSO 2: cria o pool de threads
+      FilaTarefas pool = new FilaTarefas(nthreads);
 
       //--PASSO 3: dispara a execução dos objetos runnable usando o pool de threads
       System.out.println("Primos encontrados:");

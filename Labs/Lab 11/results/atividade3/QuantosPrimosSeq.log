@@ -1,0 +1,106 @@
+Running QuantosPrimosSeq (sequential)...
+=== N=-100 ===
+N deve ser maior que 1
+
+=== N=-50 ===
+N deve ser maior que 1
+
+=== N=-1 ===
+N deve ser maior que 1
+
+=== N=0 ===
+N deve ser maior que 1
+
+=== N=10 ===
+Quantidade de números primos encontrados: 4
+
+=== N=20 ===
+Quantidade de números primos encontrados: 8
+
+=== N=30 ===
+Quantidade de números primos encontrados: 10
+
+=== N=50 ===
+Quantidade de números primos encontrados: 15
+
+=== N=75 ===
+Quantidade de números primos encontrados: 21
+
+=== N=100 ===
+Quantidade de números primos encontrados: 25
+
+=== N=123 ===
+Quantidade de números primos encontrados: 30
+
+=== N=150 ===
+Quantidade de números primos encontrados: 35
+
+=== N=189 ===
+Quantidade de números primos encontrados: 42
+
+=== N=200 ===
+Quantidade de números primos encontrados: 46
+
+=== N=231 ===
+Quantidade de números primos encontrados: 50
+
+=== N=250 ===
+Quantidade de números primos encontrados: 53
+
+=== N=289 ===
+Quantidade de números primos encontrados: 61
+
+=== N=300 ===
+Quantidade de números primos encontrados: 62
+
+=== N=333 ===
+Quantidade de números primos encontrados: 67
+
+=== N=350 ===
+Quantidade de números primos encontrados: 70
+
+=== N=355 ===
+Quantidade de números primos encontrados: 71
+
+=== N=400 ===
+Quantidade de números primos encontrados: 78
+
+=== N=450 ===
+Quantidade de números primos encontrados: 87
+
+=== N=500 ===
+Quantidade de números primos encontrados: 95
+
+=== N=550 ===
+Quantidade de números primos encontrados: 101
+
+=== N=999 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1000 ===
+Quantidade de números primos encontrados: 168
+
+=== N=1890 ===
+Quantidade de números primos encontrados: 290
+
+=== N=10000 ===
+Quantidade de números primos encontrados: 1229
+
+=== N=12399 ===
+Quantidade de números primos encontrados: 1479
+
+=== N=100000 ===
+Quantidade de números primos encontrados: 9592
+
+=== N=109089 ===
+Quantidade de números primos encontrados: 10371
+
+=== N=1000000 ===
+Quantidade de números primos encontrados: 78498
+
+=== N=1959823 ===
+Quantidade de números primos encontrados: 146173
+
+=== N=10000000 ===
+Quantidade de números primos encontrados: 664579
+
